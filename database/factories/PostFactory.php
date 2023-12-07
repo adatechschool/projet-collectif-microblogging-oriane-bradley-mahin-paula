@@ -21,7 +21,7 @@ class PostFactory extends Factory
             'title' => fake()->title(),
             'slug' => fake()->slug(),
             'content'=> fake()->paragraph(1),
-            'user_id'=> 1,
+            'user_id'=> fake()->numberBetween(1, 5),
         ];
     }
 }
