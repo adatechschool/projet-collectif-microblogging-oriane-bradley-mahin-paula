@@ -18,7 +18,7 @@ class PostFactory extends Factory
     {
         return [
             // Comment here.
-            'title' => fake()->title(),
+            'user_name' => fake()->name(),
             'slug' => fake()->slug(),
             'content'=> fake()->paragraph(1),
             'user_id'=> fake()->numberBetween(1, 5),
