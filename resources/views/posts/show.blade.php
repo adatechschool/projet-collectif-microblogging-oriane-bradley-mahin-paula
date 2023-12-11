@@ -5,7 +5,7 @@
 @section('content')
 
         <article>
-            <h1>{{ $post ->title }}</h1>
+            <h1>{{ $post ->user_name }}</h1>
             <p>
                 {{$post ->content }}
             </p>

@@ -7,7 +7,7 @@
 
     @foreach ($posts as $post)
         <article>
-            <h2>{{ $post ->title }}</h2>
+            <h2>{{ $post ->user_name }}</h2>
             <p>
                 {{$post ->content }}
             </p>
