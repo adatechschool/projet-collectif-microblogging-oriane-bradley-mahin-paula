@@ -7,7 +7,7 @@
 
 <article>
 <h1>{{ $user->name }}</h1>
-    {{--     <p>
+      <p>
         {{ $user->content }}
     </p>
 
@@ -22,8 +22,8 @@
         </ul>
     @else
         <p>No posts found.</p>
-    @endif --}}
-    <h1>Poop</h1>
+    @endif 
+    
 </article>
 
 @endsection
