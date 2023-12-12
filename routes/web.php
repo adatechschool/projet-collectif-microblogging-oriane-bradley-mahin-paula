@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Attributes\PostCondition;
@@ -38,5 +39,13 @@ Route::prefix('/posts')->name('posts.')->controller(PostController::class)->grou
         'slug'=> '[a-z0-9\-]+'
     ]) ->name('show');
 });
+
+// Route::get('/{user_name}', function(){ [UserController::class, 'profil']})
+//     ->where('user_name', '[a-zA-Z\s\.]+')
+//     ->name('profil');
+
+Route::get('/{user_name}', function () {
+    return view('user');
+})->where('user_name', '[a-zA-Z\s\.]+');
 
 require __DIR__.'/auth.php';
