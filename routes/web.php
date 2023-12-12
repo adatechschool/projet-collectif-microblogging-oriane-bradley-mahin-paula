@@ -40,10 +40,6 @@ Route::prefix('/posts')->name('posts.')->controller(PostController::class)->grou
     ]) ->name('show');
 });
 
-// Route::get('/{user_name}', function(){ [UserController::class, 'profil']})
-//     ->where('user_name', '[a-zA-Z\s\.]+')
-//     ->name('profil');
-
 Route::get('/{user_name}/{id}', [UserController::class, 'show'])
 ->where(['user_name'=> '[a-zA-Z\s\.]+','id'=> '[0-9]+'])
 ->name('profil.show');
