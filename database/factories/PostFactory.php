@@ -3,25 +3,20 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
- */
 class PostFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
+        // Get a random existing user
+        $user = User::inRandomOrder()->first();
+
         return [
-            // Comment here.
-            'title' => fake()->title(),
-            'slug' => fake()->slug(),
-            'content'=> fake()->paragraph(1),
-            'user_id'=> fake()->numberBetween(1, 5),
+            'user_name' => $user->name,
+            'slug' => $this->faker->unique()->slug(),
+            'content' => $this->faker->paragraph(1),
+            'user_id' => $user->id,
         ];
     }
 }
