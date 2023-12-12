@@ -44,8 +44,8 @@ Route::prefix('/posts')->name('posts.')->controller(PostController::class)->grou
 //     ->where('user_name', '[a-zA-Z\s\.]+')
 //     ->name('profil');
 
-Route::get('/{user_name}', function () {
-    return view('user');
-})->where('user_name', '[a-zA-Z\s\.]+');
+Route::get('/{user_name}/{id}', [UserController::class, 'show'])
+->where(['user_name'=> '[a-zA-Z\s\.]+','id'=> '[0-9]+'])
+->name('profil.show');
 
 require __DIR__.'/auth.php';

@@ -3,10 +3,11 @@
 {{-- @section('title', $user->user_name) --}}
 
 @section('content')
+@dump($user)
 
 <article>
-    {{-- <h1>{{ $user->user_name }}</h1>
-    <p>
+<h1>{{ $user->name }}</h1>
+    {{--     <p>
         {{ $user->content }}
     </p>
 
@@ -22,7 +23,7 @@
     @else
         <p>No posts found.</p>
     @endif --}}
-    <h1>Hello</h1>
+    <h1>Poop</h1>
 </article>
 
 @endsection
