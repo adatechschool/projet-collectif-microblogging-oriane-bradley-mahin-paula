@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Attributes\PostCondition;
+use App\Http\Controllers\ChirpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,5 +48,9 @@ Route::prefix('/posts')->name('posts.')->controller(PostController::class)->grou
 Route::get('/{user_name}/{id}', [UserController::class, 'show'])
 ->where(['user_name'=> '[a-zA-Z\s\.]+','id'=> '[0-9]+'])
 ->name('profil.show');
+
+Route::resource('chirps', ChirpController::class)
+    ->only(['index', 'store'])
+    ->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
