@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
@@ -43,5 +44,7 @@ Route::prefix('/posts')->name('posts.')->controller(PostController::class)->grou
 Route::get('/{user_name}/{id}', [UserController::class, 'show'])
 ->where(['user_name'=> '[a-zA-Z\s\.]+','id'=> '[0-9]+'])
 ->name('profil.show');
+
+Route::get('/home', [HomeController::class, 'feed'])->name('home.feed');
 
 require __DIR__.'/auth.php';
