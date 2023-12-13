@@ -6,6 +6,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Attributes\PostCondition;
 use App\Http\Controllers\ChirpController;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,10 +24,6 @@ use App\Http\Controllers\ChirpController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard', [ChirpController::class, 'index']
     )->middleware(['auth', 'verified'])->name('dashboard');
