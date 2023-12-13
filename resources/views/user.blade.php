@@ -3,7 +3,6 @@
 {{-- @section('title', $user->user_name) --}}
 
 @section('content')
-{{-- @dump($user) --}}
 
 <article>
 <h1>{{ $user->name }}</h1>

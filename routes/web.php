@@ -5,8 +5,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Attributes\PostCondition;
+use App\Http\Controllers\ChirpController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,10 +25,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    $user = Auth::user();
-    return view('dashboard', ['user'=> $user]);
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [ChirpController::class, 'index']
+    )->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -50,5 +50,9 @@ Route::prefix('/posts')->name('posts.')->controller(PostController::class)->grou
 Route::get('/{user_name}/{id}', [UserController::class, 'show'])
 ->where(['user_name'=> '[a-zA-Z\s\.]+','id'=> '[0-9]+'])
 ->name('profil.show');
+
+Route::resource('chirps', ChirpController::class)
+    ->only(['index', 'store'])
+    ->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
