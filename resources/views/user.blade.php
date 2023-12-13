@@ -3,12 +3,12 @@
 {{-- @section('title', $user->user_name) --}}
 
 @section('content')
-@dump($user)
+{{-- @dump($user) --}}
 
 <article>
 <h1>{{ $user->name }}</h1>
-      <p>
-        {{ $user->content }}
+    <p>
+        {{ $user->biography }}
     </p>
 
     <h2>Posts</h2>
