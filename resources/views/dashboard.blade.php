@@ -7,31 +7,20 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
-                </div>
-                <article>
-                    <h1>{{ $user->name }}</h1>
-                        <p>
-                            {{ $user->biography }}
-                        </p>
-                    
-                        <h2>Posts</h2>
-                        @if($user->posts->count() > 0)
-                            <ul>
-                                @foreach($user->posts as $post)
-                                    <li>
-                                        <p>{{ $post->content }}</p>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @else
-                            <p>No posts found.</p>
-                        @endif 
-                        
-                    </article>
+                </div>     
             </div>
+
+            <div class="p-6 space-x-2 p-4 sm:p-8 bg-white shadow sm:rounded-lg mb-4">
+                <h1 class="font-semibold text-xl text-gray-800 leading-tight">{{ $user->name }} </h1>
+                <p><br>
+                    {{ $user->biography }}
+                </p>
+
+            </div>
+
         </div>
     </div>
 
@@ -46,7 +35,26 @@
                         <div>
                             <span class="text-gray-800">{{ $chirp->user->name }}</span>
                             <small class="ml-2 text-sm text-gray-600">{{ $chirp->created_at->format('j M Y, g:i a') }}</small>
+                            @unless ($chirp->created_at->eq($chirp->updated_at))
+                                <small class="text-sm text-gray-600"> &middot; {{ __('edited') }}</small>
+                            @endunless
                         </div>
+                        @if ($chirp->user->is(auth()->user()))
+                            <x-dropdown>
+                                <x-slot name="trigger">
+                                    <button>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                        </svg>
+                                    </button>
+                                </x-slot>
+                                <x-slot name="content">
+                                    <x-dropdown-link>
+                                        {{ __('Edit') }}
+                                    </x-dropdown-link>
+                                </x-slot>
+                            </x-dropdown>
+                        @endif
                     </div>
                     <p class="mt-4 text-lg text-gray-900">{{ $chirp->message }}</p>
                 </div>

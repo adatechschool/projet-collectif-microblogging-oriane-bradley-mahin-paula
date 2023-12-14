@@ -6,6 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use App\Models\Chirp;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Auth;
 
 class ChirpController extends Controller
 {
@@ -15,9 +16,11 @@ class ChirpController extends Controller
     public function index(): View 
     {
         $chirps = Chirp::with('user')->latest()->get();
+        $user = Auth::user();
     
         return view('dashboard', [
             'chirps' => $chirps,
+            'user' => $user
         ]);
     }
 
