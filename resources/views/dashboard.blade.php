@@ -54,6 +54,8 @@
                                 <x-slot name="content">
                                     <x-dropdown-link>
                                         {{ __('Edit') }}
+                                        <br>
+                                        {{ __('Delete') }}
                                     </x-dropdown-link>
                                 </x-slot>
                             </x-dropdown>
