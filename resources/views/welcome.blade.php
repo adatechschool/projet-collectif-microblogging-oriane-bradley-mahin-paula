@@ -20,7 +20,9 @@
             @if (Route::has('login'))
                 <div class="sm:absolute sm:top-1/2 sm:right-1/2 sm:transform sm:-translate-x-1/2 sm:-translate-y-1/2 p-6 text-center z-10">
                     @auth
+
                         <a href="{{ url('/dashboard') }}" class="font-semibold text-xl text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 block mb-6">Dashboard</a>
+
                     @else
                         <a href="{{ route('login') }}" class="font-semibold text-xl text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 block mr-4 !important">Log in</a>
     
