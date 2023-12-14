@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
@@ -43,16 +44,16 @@ Route::prefix('/posts')->name('posts.')->controller(PostController::class)->grou
     ]) ->name('show');
 });
 
-// Route::get('/{user_name}', function(){ [UserController::class, 'profil']})
-//     ->where('user_name', '[a-zA-Z\s\.]+')
-//     ->name('profil');
-
 Route::get('/{user_name}/{id}', [UserController::class, 'show'])
 ->where(['user_name'=> '[a-zA-Z\s\.]+','id'=> '[0-9]+'])
 ->name('profil.show');
 
+
+Route::get('/home', [HomeController::class, 'feed'])->name('home.feed');
+
 Route::resource('chirps', ChirpController::class)
     ->only(['index', 'store'])
     ->middleware(['auth', 'verified']);
+
 
 require __DIR__.'/auth.php';
